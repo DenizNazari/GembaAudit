@@ -23,16 +23,19 @@ The files state a tier, never a model. The user picks the model and reasoning le
 |---|---|---|---|
 | Hydrogen | low | fastest/cheapest option, lowest reasoning | DevOps Engineer, Docs & Portfolio Writer |
 | Argon | medium | balanced option, medium reasoning | Frontend Engineer, QA Engineer |
-| Xenon | high | strongest option, highest reasoning | Conductor, Domain Architect, Backend Engineer, Mobile & Sync Engineer, AI Engineer, Reviewer |
+| Argon | high | strongest option, highest reasoning | Conductor, Domain Architect, Backend Engineer, Mobile & Sync Engineer, AI Engineer, Reviewer |
 
-Escalation: if a Hydrogen or Argon role fails the same task twice (build/test failure or a Reviewer BLOCKER), the Conductor re-briefs it one tier higher.
+Escalation (if a role fails the same task twice — build/test failure or a Reviewer BLOCKER):
+- `Hydrogen (low)` fails twice → re-brief at `Argon (medium)`.
+- `Argon (medium)` fails twice → re-brief at `Argon (high)`.
+- `Argon (high)` fails twice → escalate to the user.
 
 ## Ownership
 | Role | May edit |
 |---|---|
 | Conductor | `docs/PROGRESS.md`, `docs/DECISIONS.md`, `docs/TASK_BRIEF.md`, all git write operations |
 | Domain Architect | `src/GembaAudit.Domain`, `src/GembaAudit.Application` (except Sync, Ai) |
-| Backend Engineer | solution file, `Directory.Build.props`, `.editorconfig`, `Infrastructure` (except Ai), `Api` (except Ai/Sync/Hubs), `Contracts` |
+| Backend Engineer | solution file (`GembaAudit.sln`, `GembaAudit.slnx`), `Directory.Build.props`, `.editorconfig`, `Infrastructure` (except Ai), `Api` (except Ai/Sync/Hubs), `Contracts` |
 | Frontend Engineer | `UI.Shared`, `Web` |
 | Mobile & Sync Engineer | `Mobile`, `UI.Shared/Platform`, `UI.Shared/Sync`, `Application/Sync`, `Api/Controllers/SyncController.cs`, `Api/Hubs` |
 | DevOps Engineer | `.github`, Dockerfiles, compose, `.env.example`, `docs/DEPLOY.md` |

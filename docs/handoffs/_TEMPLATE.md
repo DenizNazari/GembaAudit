@@ -1,6 +1,6 @@
 # Handoff <TASK-ID> - <Role>
 
-Phase: <N>   Date: <YYYY-MM-DD>   Tier used: <Hydrogen|Argon|Xenon>
+Phase: <N>   Date: <YYYY-MM-DD>   Tier used: <Hydrogen (low)|Argon (medium)|Argon (high)>
 
 ## Changed files
 - <path>

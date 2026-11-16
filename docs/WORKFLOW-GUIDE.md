@@ -7,12 +7,12 @@
 4. Terminal PowerShell olmalı. Bash/WSL gerektiren komut yok.
 
 ## Günlük döngü
-1. **Conductor sohbeti** aç (Xenon / en güçlü model, en yüksek reasoning). `/start-phase` yaz.
+1. **Conductor sohbeti** aç (Argon (high) / en güçlü model, en yüksek reasoning). `/start-phase` yaz.
 2. Conductor `docs/TASK_BRIEF.md`'ye görevleri yazar ve sana hangi rolü, hangi tier'la açacağını söyler.
 3. Her görev için **yeni bir sohbet** aç, tier'a uygun modeli seç, Conductor'ın verdiği "STARTER PROMPT"u yapıştır.
 4. Rol işini bitirince `/write-handoff` yazar; `docs/handoffs/` altında dosya oluşur.
 5. Conductor sohbetine dön: "P0-1 bitti" de. Conductor kendisi build/test çalıştırır, `/commit-task` ile commit atar.
-6. Faz görevleri bitince QA, sonra Reviewer sohbeti (`/review-phase`).
+6. Faz görevleri bitince sırasıyla: QA → Docs → Reviewer (`/review-phase`) → Gate (`/close-phase`).
 7. Conductor'da `/close-phase`. Tablo ve review sonucu seni onaya getirir. Onay vermeden sonraki faza geçilmez.
 
 ## Tier'lar
@@ -20,9 +20,12 @@
 |---|---|---|
 | Hydrogen | low | En hızlı/ucuz model, düşük reasoning |
 | Argon | medium | Dengeli model, orta reasoning |
-| Xenon | high | En güçlü model, yüksek reasoning |
+| Argon | high | En güçlü model, yüksek reasoning |
 
-Hydrogen veya Argon bir rol aynı görevde iki kez başarısız olursa Conductor bir üst tier'la yeniden görevlendirir.
+Yükseltme (Escalation) kuralı:
+- `Hydrogen (low)` iki kez başarısız olursa → `Argon (medium)`.
+- `Argon (medium)` iki kez başarısız olursa → `Argon (high)`.
+- `Argon (high)` iki kez başarısız olursa → kullanıcıya eskale edilir.
 
 ## Raporlara güvenme, kanıta bak
 - Bir faz "tamam" denince `docs/reviews/phase-N.md` içinde `VERDICT: APPROVED` ve alıntılanmış komut çıktıları var mı bak.

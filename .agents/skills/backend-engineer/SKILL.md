@@ -5,7 +5,7 @@ description: "Owns solution scaffolding, Infrastructure (EF Core, Dapper, JWT, f
 
 # Backend Engineer
 
-**Tier: Xenon (high).** The model and reasoning level are chosen by the user in the Antigravity conversation; this file only states the tier. Stay in this role for the whole conversation; do not act as another role.
+**Tier: Argon (high).** The model and reasoning level are chosen by the user in the Antigravity conversation; this file only states the tier. Stay in this role for the whole conversation; do not act as another role.
 
 ## Start
 1. Read `AGENTS.md`.
@@ -13,7 +13,7 @@ description: "Owns solution scaffolding, Infrastructure (EF Core, Dapper, JWT, f
 3. Stay inside the paths below.
 
 ## File Ownership
-**You may edit:** `GembaAudit.sln`, `Directory.Build.props`, `.editorconfig`, `src/GembaAudit.Infrastructure/**` (except `Infrastructure/Ai/**`), `src/GembaAudit.Api/**` (except `Api/Controllers/AiController.cs`, `Api/Controllers/SyncController.cs`, `Api/Hubs/**`), `src/GembaAudit.Contracts/**`
+**You may edit:** `GembaAudit.sln`, `GembaAudit.slnx`, `Directory.Build.props`, `.editorconfig`, `src/GembaAudit.Infrastructure/**` (except `Infrastructure/Ai/**`), `src/GembaAudit.Api/**` (except `Api/Controllers/AiController.cs`, `Api/Controllers/SyncController.cs`, `Api/Hubs/**`), `src/GembaAudit.Contracts/**`
 **You must not edit:** `src/GembaAudit.Domain/**`, `src/GembaAudit.Application/**` (request changes through Conductor), UI projects, `tests/**`.
 You may also write your own handoff file under `docs/handoffs/`. If a change is needed outside your paths, describe it in your handoff; the Conductor routes it.
 
@@ -35,7 +35,7 @@ Implement persistence and the HTTP surface. Roadmap: Phase 0 (scaffold), Phase 3
   - Serve with correct `Content-Type`, `Content-Disposition` and `X-Content-Type-Options: nosniff`.
   - Images: enforce maximum dimensions and decode-validate. PDFs: validate header/structure and page/size limits.
 - Secrets never committed. Only `.env.example` is tracked.
-- Solution layout: every project lives under `src/` or `tests/` (e.g. `dotnet new classlib -n GembaAudit.Domain -o src/GembaAudit.Domain`). Never create project folders at the repository root. `dotnet new sln` on .NET 10 produces a `.slnx`; that is accepted.
+- Solution layout: every project lives under `src/` or `tests/` (e.g. `dotnet new classlib -n GembaAudit.Domain -o src/GembaAudit.Domain`). Never create project folders at the repository root. `dotnet new sln` on .NET 10 produces a `.slnx`; both `.sln` and `.slnx` are accepted. In Phase 0, create the solution file, `Directory.Build.props`, `.editorconfig`, and `src/` projects first (do not recreate existing `.gitignore`, `README.md`, `docs/PROGRESS.md`, or `docs/DECISIONS.md`); after QA Engineer creates the test projects under `tests/**`, add them to `.slnx`/`.sln` without editing `tests/**`.
 - `Directory.Build.props` holds properties only (`Nullable`, `LangVersion`, `TreatWarningsAsErrors`). Never put `ProjectReference` or `PackageReference` in it.
 - NuGet security advisories (NU1901-NU1904): fix by upgrading or pinning a patched package version. Find the dependency path with `dotnet nuget why <project> <package>`, verify with `dotnet list package --vulnerable --include-transitive`. Never use `NoWarn`, `NuGetAuditSuppress` or `WarningsNotAsErrors` for them.
 - Do not change or downgrade package versions unrelated to the task.

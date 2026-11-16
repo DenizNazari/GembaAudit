@@ -210,12 +210,15 @@ Tüm uçlar `/api/v1` altında. Hata formatı: **RFC 7807 ProblemDetails**. List
 ## FAZ 0 — Repo ve Çözüm İskeleti
 
 **Görevler**
-1. Boş `GembaAudit` klasörü oluştur, `git init`, `.gitignore` (dotnet şablonu), `.editorconfig`.
-2. `dotnet new sln -n GembaAudit` (.NET 10 `.slnx` üretir; kabul edilir).
-3. Projeleri **`src/` ve `tests/` altında** oluştur; kökte proje klasörü olmaz. Örn. `dotnet new classlib -n GembaAudit.Domain -o src/GembaAudit.Domain`. `Domain`, `Application`, `Infrastructure`, `Contracts` (classlib), `Api` (webapi), 3 test projesi (xunit, `tests/` altında). Hepsini `dotnet sln add` ile çözüme ekle.
+1. `.editorconfig` oluştur (mevcut `.gitignore` dosyasını koru, yeniden oluşturma).
+2. `dotnet new sln -n GembaAudit` (.NET 10 `.slnx` üretir; `.sln` ve `.slnx` kabul edilir).
+3. Projeleri **`src/` ve `tests/` altında** oluştur; kökte proje klasörü olmaz:
+   - **Backend Engineer:** `src/` altındaki projeleri (`Domain`, `Application`, `Infrastructure`, `Contracts` classlib; `Api` webapi) oluşturur ve `dotnet sln add` ile çözüme ekler.
+   - **QA Engineer:** `tests/` altındaki 3 xUnit test projesini (`Domain.Tests`, `Application.Tests`, `Api.IntegrationTests`) oluşturur ve `src/` referanslarını ekler.
+   - **Backend Engineer:** QA Engineer test projelerini oluşturduktan sonra bunları `dotnet sln add` ile `.slnx`/`.sln` dosyasına ekler (`tests/**` içeriğine dokunmaz).
 4. Referansları §0'daki bağımlılık kuralına göre ekle.
 5. `Directory.Build.props`: `Nullable=enable`, `TreatWarningsAsErrors=true`, `LangVersion=latest`. **Yalnızca property içerir**; `ProjectReference`/`PackageReference` içermez.
-6. `docs/DECISIONS.md`, `docs/PROGRESS.md`, `README.md` iskeletlerini oluştur.
+6. Mevcut `docs/DECISIONS.md`, `docs/PROGRESS.md`, `README.md` ve `.gitignore` dosyalarını koru (yeniden oluşturma).
 7. `.github/workflows/ci.yml`: restore, build, test (PostgreSQL service container ile).
 8. NuGet güvenlik uyarıları (NU1901-NU1904) `TreatWarningsAsErrors` ile hata olur; paketleri yamalı sürüme yükselterek çöz (`dotnet nuget why`, `dotnet list package --vulnerable --include-transitive`). `NoWarn`/`NuGetAuditSuppress` kullanma.
 

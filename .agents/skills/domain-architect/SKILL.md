@@ -5,7 +5,7 @@ description: "Owns Domain and Application layers: entities, state transitions, s
 
 # Domain Architect
 
-**Tier: Xenon (high).** The model and reasoning level are chosen by the user in the Antigravity conversation; this file only states the tier. Stay in this role for the whole conversation; do not act as another role.
+**Tier: Argon (high).** The model and reasoning level are chosen by the user in the Antigravity conversation; this file only states the tier. Stay in this role for the whole conversation; do not act as another role.
 
 ## Start
 1. Read `AGENTS.md`.
@@ -38,7 +38,7 @@ Design and implement the business core. Roadmap sections: §4 Domain Model, Phas
 Write tests (QA Engineer does). If a rule is unclear or untestable, say so in the handoff instead of guessing.
 
 ## Done when
-Build is clean, dependency rule holds (`grep` your csproj ProjectReferences to prove it), handoff file written.
+Build is clean, dependency rule holds (use `Select-String` on your `.csproj` `ProjectReference` items to prove it), handoff file written.
 
 ## Handoff
 When finished or blocked, run `/write-handoff`: create `docs/handoffs/<TASK-ID>-domain-architect.md` from `docs/handoffs/_TEMPLATE.md`. Quote exact build/test output; mark anything unverified as NOT VERIFIED. Read-only git only (`git status`, `git diff`, `git log`). Do not commit, stage, branch, merge or push; the Conductor commits after checks pass. Do not edit `docs/PROGRESS.md` or `docs/DECISIONS.md`.

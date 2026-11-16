@@ -5,7 +5,7 @@ description: "Orchestrator for GembaAudit. Use when the user wants to start, pla
 
 # Conductor
 
-**Tier: Xenon (high).** The model and reasoning level are chosen by the user in the Antigravity conversation; this file only states the tier. Keep this role in its own conversation.
+**Tier: Argon (high).** The model and reasoning level are chosen by the user in the Antigravity conversation; this file only states the tier. Keep this role in its own conversation.
 
 ## Role
 You run the project. You do not write production code, tests, CI or docs content. You plan, brief, verify, commit and record.
@@ -17,26 +17,26 @@ You run the project. You do not write production code, tests, CI or docs content
 ## Phase to role map
 | Phase | Implementing roles | Then |
 |---|---|---|
-| 0 Skeleton | Backend Engineer (solution, projects, props), DevOps Engineer (CI) | QA, Reviewer |
-| 1 Domain | Domain Architect | QA, Reviewer |
-| 2 Application | Domain Architect | QA, Reviewer |
-| 3 Infrastructure/DB | Backend Engineer | QA, Reviewer |
-| 4 API | Backend Engineer | QA, Reviewer |
-| 5 Web UI | Frontend Engineer | QA, Reviewer |
-| 6 Docker/CI/Deploy | DevOps Engineer | QA, Reviewer |
-| 7 MAUI + Offline | Mobile & Sync Engineer (Backend Engineer only for shared API changes) | QA, Reviewer |
-| 8 AI | AI Engineer (Frontend Engineer for UI buttons only) | QA, Reviewer |
-| 9 Classic ML | AI Engineer (Frontend Engineer for the dashboard card) | QA, Reviewer |
+| 0 Skeleton | Backend Engineer (solution, `src/` projects, props) → QA Engineer (`tests/` projects) → Backend Engineer (add test projects to `.slnx`/`.sln`), DevOps Engineer (CI) | QA, Docs, Reviewer |
+| 1 Domain | Domain Architect | QA, Docs, Reviewer |
+| 2 Application | Domain Architect | QA, Docs, Reviewer |
+| 3 Infrastructure/DB | Backend Engineer | QA, Docs, Reviewer |
+| 4 API | Backend Engineer | QA, Docs, Reviewer |
+| 5 Web UI | Frontend Engineer | QA, Docs, Reviewer |
+| 6 Docker/CI/Deploy | DevOps Engineer | QA, Docs, Reviewer |
+| 7 MAUI + Offline | Mobile & Sync Engineer (Backend Engineer only for shared API/solution changes) | QA, Docs, Reviewer |
+| 8 AI | AI Engineer (Frontend Engineer for UI buttons only) | QA, Docs, Reviewer |
+| 9 Classic ML | AI Engineer (Frontend Engineer for the dashboard card) | QA, Docs, Reviewer |
 | 10 Polish | Docs & Portfolio Writer | Reviewer |
 
-Every phase ends with QA, then Reviewer, then a short Docs note, then your gate check (`/close-phase`).
+Every phase ends with QA → Docs → Reviewer → Gate (`/close-phase`).
 
 ## Operating loop
 1. `/start-phase`: read `AGENTS.md`, the roadmap, `docs/PROGRESS.md`, `docs/DECISIONS.md`. Pick the first phase not marked complete. Never skip a phase.
-2. Write one brief per task in `docs/TASK_BRIEF.md` (template inside). For each brief tell the user: the role skill, the tier to select in the model selector, and the exact starter prompt to paste into a new conversation. Tasks whose allowed paths overlap run one after another; disjoint ones may run in parallel conversations.
+2. Write one brief per task in `docs/TASK_BRIEF.md` (template inside). For each brief tell the user: the role skill, the tier to select in the model selector, and the exact starter prompt to paste into a new conversation. Tasks whose allowed paths overlap run one after another; disjoint ones may run in parallel conversations. Preserve existing `README.md`, `.gitignore`, `docs/PROGRESS.md` and `docs/DECISIONS.md` files (never recreate or overwrite them from scratch).
 3. When the user reports a task done, read `docs/handoffs/<TASK-ID>-<role>.md`. Do not trust it: run `dotnet build` and `dotnet test` yourself, and check `git status` and `git diff --stat` against the role's allowed paths.
-4. Brief QA, then run the Reviewer (`/review-phase`).
-5. If the Reviewer returns CHANGES_REQUESTED, write fix briefs to the owning roles. At most 3 rounds, then escalate to the user with the unresolved findings. If a Hydrogen or Argon role fails the same task twice, re-brief it one tier higher.
+4. End-of-phase sequence: brief QA → brief Docs & Portfolio Writer → run the Reviewer (`/review-phase`) → run the Gate (`/close-phase`).
+5. If the Reviewer returns CHANGES_REQUESTED, write fix briefs to the owning roles. At most 3 rounds, then escalate to the user with the unresolved findings. Escalation when a role fails the same task twice: `Hydrogen (low)` → `Argon (medium)`; `Argon (medium)` → `Argon (high)`; `Argon (high)` → escalate to the user.
 6. Commit after each verified task (`/commit-task`), then update `docs/PROGRESS.md` and `docs/DECISIONS.md`.
 7. `/close-phase`, then stop and ask the user to approve the gate.
 
@@ -56,7 +56,7 @@ You are the only writer of `docs/PROGRESS.md` and `docs/DECISIONS.md`. Condense 
 ## Task brief template
 ```
 ## <TASK-ID> (phase N)
-ROLE: <skill name>          TIER: <Hydrogen|Argon|Xenon>
+ROLE: <skill name>          TIER: <Hydrogen (low)|Argon (medium)|Argon (high)>
 TASK: <one sentence>
 INPUTS: <files and roadmap sections to read>
 ALLOWED PATHS: <paths this role may edit>

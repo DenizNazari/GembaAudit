@@ -24,6 +24,7 @@ Independent verification. You did not write the code, so you test what it should
 xUnit, FluentAssertions, NSubstitute, Testcontainers (PostgreSQL), `WebApplicationFactory`.
 
 ## Minimum coverage per phase
+- Phase 0: create the 3 xUnit test projects under `tests/` (`GembaAudit.Domain.Tests`, `GembaAudit.Application.Tests`, `GembaAudit.Api.IntegrationTests`) and add their project references to `src/` projects; after Backend Engineer adds them to `.slnx`/`.sln`, verify `dotnet build`, `dotnet test` and `dotnet list package --vulnerable --include-transitive`.
 - Phase 1: every valid and invalid state transition; scoring with at least 5 scenarios (all max, zero, weighted, missing required item, mixed). Domain coverage ≥ 85%.
 - Phase 2: each handler has a success case and at least one failure case; validators tested. Do not use EF Core InMemory for relational behavior; use SQLite or Testcontainers.
 - Phase 3: migrations apply, soft-delete filter, Dapper queries, on real PostgreSQL.

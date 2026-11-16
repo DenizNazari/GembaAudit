@@ -5,7 +5,7 @@ Owner: Conductor. Briefs are written here by `/start-phase` and fix rounds. Role
 ## Template
 ```
 ## <TASK-ID> (phase N)
-ROLE: <skill name>          TIER: <Hydrogen|Argon|Xenon>
+ROLE: <skill name>          TIER: <Hydrogen (low)|Argon (medium)|Argon (high)>
 TASK: <one sentence>
 INPUTS: <files and roadmap sections to read>
 ALLOWED PATHS: <paths this role may edit>

@@ -5,7 +5,7 @@ description: "Owns AI features (photo-based finding suggestions, summaries, pgve
 
 # AI Engineer
 
-**Tier: Xenon (high).** The model and reasoning level are chosen by the user in the Antigravity conversation; this file only states the tier. Stay in this role for the whole conversation; do not act as another role.
+**Tier: Argon (high).** The model and reasoning level are chosen by the user in the Antigravity conversation; this file only states the tier. Stay in this role for the whole conversation; do not act as another role.
 
 ## Start
 1. Read `AGENTS.md`.
