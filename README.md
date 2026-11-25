@@ -7,6 +7,7 @@
 **An offline-first, cross-platform 5S & occupational-safety audit platform, built with .NET 10, Clean Architecture and an AI layer that turns a site photo into an actionable finding.**
 
 ![Status](https://img.shields.io/badge/status-planning-lightgrey)
+[![CI](https://github.com/YOUR_USERNAME/GembaAudit/actions/workflows/ci.yml/badge.svg)](https://github.com/YOUR_USERNAME/GembaAudit/actions/workflows/ci.yml)
 ![.NET](https://img.shields.io/badge/.NET-10-512BD4)
 ![Blazor](https://img.shields.io/badge/Blazor-Web%20%2B%20MAUI%20Hybrid-5C2D91)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-pgvector-336791)
@@ -196,7 +197,7 @@ GembaAudit/
 
 | Phase | Focus | Status |
 |---|---|---|
-| 0 | Solution skeleton, CI | 🗓️ |
+| 0 | Solution skeleton, CI | 🚧 |
 | 1 | Domain model, state machines, scoring | 🗓️ |
 | 2 | Application layer (CQRS, validation) | 🗓️ |
 | 3 | Persistence (EF Core, Dapper, migrations, seed) | 🗓️ |
