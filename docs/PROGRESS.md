@@ -28,6 +28,7 @@ A phase is `complete` only when every acceptance criterion in the roadmap is PAS
 ## Log (newest first)
 | Date | Phase | Task | Role | Result | Evidence |
 |---|---|---|---|---|---|
+| 2026-11-25 | 0 | Migration | Conductor / Backend / QA | PASS | Migrated all 8 projects (`src/` and `tests/`) from `net9.0` to `net10.0` under SDK `10.0.404` (`D-008`) |
 | 2026-11-25 | 0 | P0-3 | QA Engineer | PASS | 3 xUnit projects under `tests/` (`net9.0`); `dotnet build` 0 warnings/0 errors; `dotnet test` 1/1, 2/2, 4/4 passed; 0 vulnerable packages |
 | 2026-11-25 | 0 | P0-2 | DevOps Engineer | PASS (def) / NOT VERIFIED (live) | `.github/workflows/ci.yml` created with pinned `ubuntu-24.04`, `postgres:16.6`, `actions/checkout@v4`, `actions/setup-dotnet@v4`; handoff `docs/handoffs/P0-2-devops-engineer.md` |
 | 2026-11-25 | 0 | P0-1 | Backend Engineer | PASS | `GembaAudit.sln`, `.editorconfig`, `Directory.Build.props`, 5 `src/` projects (`net9.0`); `dotnet build` 0 warnings/0 errors; 0 vulnerable packages |
