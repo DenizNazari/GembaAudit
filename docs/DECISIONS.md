@@ -10,3 +10,4 @@ Owner: Conductor. One row per decision. Roles report new decisions in their hand
 | D-004 | 2026-11-16 | MediatR pinned to 12.x | Later versions require a commercial license | Roadmap |
 | D-005 | 2026-11-16 | NuGet security advisories are fixed by upgrading or pinning, never suppressed | Suppression hides real vulnerabilities | User |
 | D-006 | 2026-11-16 | All projects live under `src/` and `tests/`; `Directory.Build.props` holds properties only | Earlier attempt created root-level projects and a props file with project references | User |
+| D-007 | 2026-11-25 | Projects target `net9.0` with `GembaAudit.sln` | Local SDK is `.NET 9.0.319` (.NET 10 SDK not installed); per Roadmap §2 fallback to .NET 9 | Backend Engineer (P0-1) |
