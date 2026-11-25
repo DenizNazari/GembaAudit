@@ -1,0 +1,6 @@
+@GembaAudit.Api_HostAddress = http://localhost:5277
+
+GET {{GembaAudit.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

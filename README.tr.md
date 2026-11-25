@@ -7,6 +7,7 @@
 **.NET 10, Clean Architecture ve saha fotoğrafını uygulanabilir bir uygunsuzluk kaydına çeviren bir yapay zekâ katmanıyla geliştirilen, çevrimdışı çalışabilen, çok platformlu 5S ve İş Sağlığı Güvenliği (İSG) denetim platformu.**
 
 ![Durum](https://img.shields.io/badge/durum-planlama-lightgrey)
+[![CI](https://github.com/YOUR_USERNAME/GembaAudit/actions/workflows/ci.yml/badge.svg)](https://github.com/YOUR_USERNAME/GembaAudit/actions/workflows/ci.yml)
 ![.NET](https://img.shields.io/badge/.NET-10-512BD4)
 ![Blazor](https://img.shields.io/badge/Blazor-Web%20%2B%20MAUI%20Hybrid-5C2D91)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-pgvector-336791)
@@ -196,7 +197,7 @@ GembaAudit/
 
 | Faz | Odak | Durum |
 |---|---|---|
-| 0 | Çözüm iskeleti, CI | 🗓️ |
+| 0 | Çözüm iskeleti, CI | 🚧 |
 | 1 | Domain modeli, durum makineleri, puanlama | 🗓️ |
 | 2 | Application katmanı (CQRS, doğrulama) | 🗓️ |
 | 3 | Kalıcılık (EF Core, Dapper, migration, seed) | 🗓️ |
